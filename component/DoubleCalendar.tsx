@@ -55,12 +55,12 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
 
     return (
       <div className="flex flex-col gap-3">
-        <div className="grid grid-cols-7 gap-x-3 text-xs font-medium uppercase text-neutral-400">
+        <div className="grid grid-cols-7 gap-x-1 md:gap-x-3 text-xs font-medium uppercase text-neutral-400">
           {WEEKDAYS.map((day) => (
-            <div key={`${month.format("YYYY-MM")}-${day}`} className="size-8 flex items-center justify-center">{day}</div>
+            <div key={`${month.format("YYYY-MM")}-${day}`} className="md:size-8 flex items-center justify-center">{day}</div>
           ))}
         </div>
-        <div className="grid grid-cols-7 gap-x-3 gap-y-2 text-sm">
+        <div className="grid grid-cols-7 gap-x-1 md:gap-x-3 gap-y-2 text-sm">
           {days.map((day) => {
             const isCurrentMonth = day.month() === month.month();
             const isSelected = value ? value.isSame(day, "day") : false;
@@ -98,31 +98,34 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
   };
 
   return (
-    <div className="h-[370px] flex flex-col gap-6 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+    <div className="h-auto md:h-[370px] w-full flex flex-col gap-6 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
       <div className="flex items-center justify-between">
         <div
           onClick={handlePrev}
-          className="flex h-9 w-9 items-center justify-center "
+          className="flex h-9 w-9 items-center justify-center cursor-pointer"
           aria-label="Previous month"
         >
           <Image src={images.chevronLeftIcon} alt="chevron left" width={20} height={20} />
         </div>
-        <div className="flex flex-1 justify-evenly gap-8 text-base font-semibold text-neutral-700">
+        <div className="flex flex-1 justify-center md:justify-evenly gap-8 text-base font-semibold text-neutral-700">
+          <span className="md:hidden">{months[0].format("MMMM YYYY")}</span>
           {months.map((month) => month.format("MMMM YYYY")).map((label) => (
-            <span key={label}>{label}</span>
+            <span key={label} className="hidden md:inline">{label}</span>
           ))}
         </div>
         <div
           onClick={handleNext}
-          className="flex h-9 w-9 items-center justify-center "
+          className="flex h-9 w-9 items-center justify-center cursor-pointer"
           aria-label="Next month"
         >
           <Image src={images.chevronRightIcon} alt="chevron right" width={20} height={20} />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {months.map((month) => (
-          <div key={month.format("YYYY-MM")}>{renderCalendar(month)}</div>
+        {months.map((month, index) => (
+          <div key={month.format("YYYY-MM")} className={index === 1 ? "hidden md:block" : ""}>
+            {renderCalendar(month)}
+          </div>
         ))}
       </div>
     </div>

@@ -126,7 +126,7 @@ const DateInput = ({
       </div>
 
       {isOpen && onDateChange && (
-        <div className={`absolute ${checkBox ? "right-0" : "left-0"} top-full z-20 mt-2 w-[569px]`}>
+        <div className={`absolute ${checkBox ? "right-0" : "left-0"} top-full z-20 mt-2 w-[90vw] max-w-[268px] md:max-w-[569px]`}>
           <DoubleCalendar value={selectedDate ?? undefined} onChange={handleDateSelect} />
         </div>
       )}
