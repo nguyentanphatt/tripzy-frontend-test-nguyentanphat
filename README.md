@@ -2,7 +2,7 @@
 
 A modern travel booking search interface built with Next.js, featuring location selection, date pickers, and passenger management.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -71,7 +71,7 @@ npm start
 yarn start
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Framework & Core Technologies
 
@@ -110,18 +110,18 @@ yarn start
 10. **Responsive Design**: Mobile-first approach ensuring works on all screen sizes
 
 
-## 🌐 Demo
+## Demo
 
 [Vercel Demo Link](https://your-demo-link.vercel.app)
 
-## 📝 Scripts
+## Scripts
 
 - `dev` - Start development server
 - `build` - Build for production
 - `start` - Start production server
 - `lint` - Run ESLint
 
-## 🛠️ Development Notes
+## Development Notes
 
 - The project uses path aliases (`@/*`) for cleaner imports
 - Global styles are configured in `app/globals.css` with Tailwind v4 `@theme`
