@@ -1,6 +1,6 @@
 "use client";
 import { Fragment, useMemo, useState } from "react";
-import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from "@headlessui/react";
+import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
@@ -56,17 +56,22 @@ const LocationCombobox = ({
                 <label className="text-xs font-medium uppercase leading-4 text-light-gray">
                     {label}
                 </label>
-                <div className="flex items-center gap-2 rounded-lg border border-[hsla(220,10%,82%,1)] p-4 focus-within:border-primary">
+                <ComboboxButton as="div" className="flex items-center gap-2 rounded-lg border border-[hsla(220,10%,82%,1)] p-4 focus-within:border-primary cursor-text">
                     <Image src={icon} alt="icon" width={20} height={20} />
                     <ComboboxInput
-                        className="w-full border-none bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none"
+                        className="w-full border-none bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none cursor-text"
                         displayValue={(option: LocationOption | null) =>
                             option ? `${option.short_code} - ${option.english_name}` : ""
                         }
                         placeholder={placeholder}
                         onChange={(event) => setQuery(event.target.value)}
+                        onClick={() => {
+                            if (!query) {
+                                setQuery("");
+                            }
+                        }}
                     />
-                </div>
+                </ComboboxButton>
                 <Transition
                     as={Fragment}
                     leave="transition ease-in duration-100"

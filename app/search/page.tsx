@@ -57,7 +57,7 @@ const SearchContent = () => {
 const Page = () => {
     return (
         <Suspense fallback={
-            <div className="min-h-screen p-8">
+            <div className="w-[80%] h-auto pb-4 bg-white shadow-[0_8px_32px_hsla(207,57%,29%,0.12)] absolute top-[30%] left-[50%] translate-x-[-50%] rounded-2xl flex flex-col gap-6'">
                 <h1 className="text-3xl font-bold mb-6">Search Results</h1>
                 <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl">
                     <p className="text-gray-600">Loading...</p>
