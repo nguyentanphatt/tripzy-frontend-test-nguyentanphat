@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import chevronLeftIcon from "@/public/chevron_left.svg";
-import chevronRightIcon from "@/public/chevron_right.svg";
 import Image from "next/image";
+import { images } from '@/contants/image';
 const WEEKDAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
 interface Props {
@@ -73,14 +72,14 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
               "mx-auto size-8 flex items-center justify-center rounded-full transition-colors";
 
             const colorClasses = !isCurrentMonth
-              ? "text-neutral-300"
+              ? "text-light"
               : isSelected
-              ? "bg-[hsla(196,100%,55%,1)] text-white"
+              ? "bg-primary text-white"
               : isToday
-              ? "text-[hsla(196,100%,55%,1)]"
+              ? "text-primary"
               : isWeekend
-              ? "text-red-500 hover:bg-blue-100"
-              : "text-neutral-700 hover:bg-blue-100";
+              ? "text-danger hover:bg-blue-100"
+              : "text-dark hover:bg-blue-100";
 
             return (
               <button
@@ -106,7 +105,7 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
           className="flex h-9 w-9 items-center justify-center "
           aria-label="Previous month"
         >
-          <Image src={chevronLeftIcon} alt="chevron left" width={20} height={20} />
+          <Image src={images.chevronLeftIcon} alt="chevron left" width={20} height={20} />
         </div>
         <div className="flex flex-1 justify-evenly gap-8 text-base font-semibold text-neutral-700">
           {months.map((month) => month.format("MMMM YYYY")).map((label) => (
@@ -118,7 +117,7 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
           className="flex h-9 w-9 items-center justify-center "
           aria-label="Next month"
         >
-          <Image src={chevronRightIcon} alt="chevron right" width={20} height={20} />
+          <Image src={images.chevronRightIcon} alt="chevron right" width={20} height={20} />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

@@ -2,6 +2,12 @@
 
 @theme {
   --font-nunito-sans: 'Nunito Sans', sans-serif;
+  --color-dark: hsla(240,10%,8%,1);
+  --color-light: hsla(220,10%,82%,1);
+  --color-gray: hsla(240,8%,50%,1);
+  --color-light-gray: hsla(222,5%,42%,1);
+  --color-primary: hsla(196,100%,55%,1);
+  --color-danger: hsla(0,92%,40%,1)
 }
 
 html,

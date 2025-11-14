@@ -1,11 +1,10 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Dayjs } from "dayjs";
 import DoubleCalendar from "./DoubleCalendar";
 
-interface Props {
+interface DateInputProps {
   label: string;
   placeholder?: string;
   icon: string;
@@ -29,7 +28,7 @@ const DateInput = ({
   checkBox,
   checked,
   onCheckChange,
-}: Props) => {
+}: DateInputProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -92,10 +91,10 @@ const DateInput = ({
             type="checkbox"
             checked={checked}
             onChange={(e) => onCheckChange?.(e.target.checked)}
-            className="h-4 w-4 rounded-xs border-[hsla(220,10%,82%,1)] accent-[hsla(196,100%,55%,1)]"
+            className="h-4 w-4 rounded-xs border-[hsla(220,10%,82%,1)] accent-primary"
           />
         )}
-        <label className="text-xs font-medium uppercase leading-4 text-[hsla(222,5%,42%,1)]">
+        <label className="text-xs font-medium uppercase leading-4 text-light-gray">
           {label}
         </label>
       </div>
@@ -105,7 +104,7 @@ const DateInput = ({
         className={`flex items-center gap-2 rounded-lg border p-4 transition-colors ${
           disabled
             ? "cursor-not-allowed border-[hsla(210,5%,15%,0.1)] bg-[hsla(220,10%,95%,1)]"
-            : "cursor-pointer border-[hsla(220,10%,82%,1)] hover:border-[hsla(196,100%,55%,1)]"
+            : "cursor-pointer border-[hsla(220,10%,82%,1)] hover:border-primary"
         }`}
       >
         <Image

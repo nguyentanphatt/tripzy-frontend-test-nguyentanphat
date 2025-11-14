@@ -1,5 +1,4 @@
 "use client";
-
 import { Fragment, useMemo, useState } from "react";
 import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -11,7 +10,7 @@ export type LocationOption = {
     code_state: string;
 };
 
-type Props = {
+type LocationComboboxProps = {
     label: string;
     placeholder?: string;
     icon: string | StaticImport;
@@ -29,7 +28,7 @@ const LocationCombobox = ({
     options,
     value,
     onChange,
-}: Props) => {
+}: LocationComboboxProps) => {
     const [query, setQuery] = useState("");
 
     const filteredOptions = useMemo(() => {
@@ -54,10 +53,10 @@ const LocationCombobox = ({
     return (
         <Combobox value={value} onChange={handleChange} by={(a, b) => a?.short_code === b?.short_code}>
             <div className="relative flex w-full flex-col gap-2">
-                <label className="text-xs font-medium uppercase leading-4 text-[hsla(222,5%,42%,1)]">
+                <label className="text-xs font-medium uppercase leading-4 text-light-gray">
                     {label}
                 </label>
-                <div className="flex items-center gap-2 rounded-lg border border-[hsla(220,10%,82%,1)] p-4 focus-within:border-[hsla(196,100%,55%,1)]">
+                <div className="flex items-center gap-2 rounded-lg border border-[hsla(220,10%,82%,1)] p-4 focus-within:border-primary">
                     <Image src={icon} alt="icon" width={20} height={20} />
                     <ComboboxInput
                         className="w-full border-none bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none"

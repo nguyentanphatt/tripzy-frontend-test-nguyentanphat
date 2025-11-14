@@ -7,7 +7,6 @@ export default function Home() {
     <div className="h-screen w-full relative">
       <Header />
       <SearchPanel />
-      <div className="h-[50%]" />
     </div>
   );
 }

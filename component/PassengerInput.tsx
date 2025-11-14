@@ -1,24 +1,22 @@
-import passengerIcon from "@/public/passenger.svg";
-import chevronTopIcon from "@/public/chevron_top.svg";
-import chevronBottomIcon from "@/public/chevron_bottom.svg";
 import Image from 'next/image';
+import { images } from '@/contants/image';
 
-type Props = {
+type PassengerInputProps = {
   passengerCount: number;
   setPassengerCount: (count: number) => void;
 }
 
-const PassengerInput = ({passengerCount, setPassengerCount}:Props) => {
+const PassengerInput = ({passengerCount, setPassengerCount}:PassengerInputProps) => {
   return (
     <div className="w-[149px] flex flex-col gap-2">
       <div className="flex gap-2">
-        <label className="text-xs uppercase font-medium leading-4 text-[hsla(222,5%,42%,1)]">
+        <label className="text-xs uppercase font-medium leading-4 text-light-gray">
           No.of Passenger
         </label>
       </div>
-      <div className="flex items-center gap-2 border border-[hsla(220,10%,82%,1)] rounded-lg focus-within:border-[hsla(196,100%,55%,1)]">
+      <div className="flex items-center gap-2 border border-[hsla(220,10%,82%,1)] rounded-lg focus-within:border-primary">
         <div className="w-[109px] flex border-red-500 p-4">
-          <Image src={passengerIcon} alt="icon" width={20} height={20} />
+          <Image src={images.passengerIcon} alt="icon" width={20} height={20} />
           <input
             type="text"
             value={passengerCount}
@@ -32,7 +30,7 @@ const PassengerInput = ({passengerCount, setPassengerCount}:Props) => {
             onClick={() => setPassengerCount(passengerCount + 1)}
           >
             <Image
-              src={chevronTopIcon}
+              src={images.chevronTopIcon}
               alt="Increase Button"
               width={16}
               height={16}
@@ -43,7 +41,7 @@ const PassengerInput = ({passengerCount, setPassengerCount}:Props) => {
             onClick={() => setPassengerCount(Math.max(1, passengerCount - 1))}
           >
             <Image
-              src={chevronBottomIcon}
+              src={images.chevronBottomIcon}
               alt="Decrease Button"
               width={16}
               height={16}

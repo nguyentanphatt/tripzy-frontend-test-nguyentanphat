@@ -1,18 +1,14 @@
 import { transportData } from "@/contants/data";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
-type Props = {
+type TransportTypeProps = {
   id: string;
-  icon?: string | StaticImport;
-  iconCircleBg?: string;
-  bgColor?: string;
   title: string;
   selected: string;
   onSelect: (type: string) => void;
 };
 
-const TransportType = ({ id, title, selected, onSelect }: Props) => {
+const TransportType = ({ id, title, selected, onSelect }: TransportTypeProps) => {
   const item = transportData.find((d) => d.id === id);
   if (!item) return null;
   const isSelected = selected === id;
@@ -28,7 +24,7 @@ const TransportType = ({ id, title, selected, onSelect }: Props) => {
       >
         <Image src={item.icon} alt={id} width={40} height={40} />
       </div>
-      <p className="text-[hsla(240,10%,8%,1)] font-medium text-base lg:text-lg">{title}</p>
+      <p className="text-dark font-medium text-base lg:text-lg">{title}</p>
     </div>
   );
 };
