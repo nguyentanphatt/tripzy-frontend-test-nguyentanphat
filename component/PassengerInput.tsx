@@ -8,7 +8,7 @@ type Props = {
   setPassengerCount: (count: number) => void;
 }
 
-const PassengerButton = ({passengerCount, setPassengerCount}:Props) => {
+const PassengerInput = ({passengerCount, setPassengerCount}:Props) => {
   return (
     <div className="w-[149px] flex flex-col gap-2">
       <div className="flex gap-2">
@@ -55,4 +55,4 @@ const PassengerButton = ({passengerCount, setPassengerCount}:Props) => {
   );
 }
 
-export default PassengerButton
+export default PassengerInput

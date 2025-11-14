@@ -24,11 +24,11 @@ const TransportType = ({ id, title, selected, onSelect }: Props) => {
       onClick={() => onSelect && onSelect(id)}
     >
       <div
-        className={`size-12 rounded-full flex items-center justify-center ${item.iconCircleBg}`}
+        className={`size-12 flex-none rounded-full flex items-center justify-center ${item.iconCircleBg}`}
       >
         <Image src={item.icon} alt={id} width={40} height={40} />
       </div>
-      <p className="text-[hsla(240,10%,8%,1)] font-medium text-lg">{title}</p>
+      <p className="text-[hsla(240,10%,8%,1)] font-medium text-base lg:text-lg">{title}</p>
     </div>
   );
 };
