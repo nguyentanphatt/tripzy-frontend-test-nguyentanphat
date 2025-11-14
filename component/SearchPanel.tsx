@@ -29,7 +29,7 @@ const SearchPanel = () => {
         />
       </div>
       {selectedType === "bus" ? (
-        <SearchForm />
+        <SearchForm mode={selectedType} />
       ) : (
         <div className="w-full min-h-[150px] flex items-center justify-center">
           <p className="text-lg text-gray">

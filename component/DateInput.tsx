@@ -91,7 +91,7 @@ const DateInput = ({
             type="checkbox"
             checked={checked}
             onChange={(e) => onCheckChange?.(e.target.checked)}
-            className="h-4 w-4 rounded-xs border-[hsla(220,10%,82%,1)] accent-primary"
+            className="h-4 w-4 rounded-xs border-[hsla(220,10%,82%,1)] checkbox-primary"
           />
         )}
         <label className="text-xs font-medium uppercase leading-4 text-light-gray">
@@ -101,11 +101,10 @@ const DateInput = ({
 
       <div
         onClick={handleToggleCalendar}
-        className={`flex items-center gap-2 rounded-lg border p-4 transition-colors ${
-          disabled
+        className={`flex items-center gap-2 rounded-lg border p-4 transition-colors ${disabled
             ? "cursor-not-allowed border-[hsla(210,5%,15%,0.1)] bg-[hsla(220,10%,95%,1)]"
             : "cursor-pointer border-[hsla(220,10%,82%,1)] hover:border-primary"
-        }`}
+          }`}
       >
         <Image
           src={icon}
@@ -119,11 +118,10 @@ const DateInput = ({
           readOnly
           value={displayValue}
           placeholder={placeholder}
-          className={`flex-1 bg-transparent outline-none ${
-            disabled
+          className={` bg-transparent outline-none ${disabled
               ? "text-[hsla(220,10%,70%,1)] placeholder-[hsla(220,10%,70%,1)]"
               : "text-gray-900 placeholder-gray-400"
-          }`}
+            }`}
         />
       </div>
 

@@ -15,10 +15,10 @@ const Header = () => {
         </h1>
       </div>
       <div className="text-center">
-        <h1 className="text-dark font-semibold text-[40px] tracking-[0.89px]">
+        <h1 className="text-dark font-semibold text-xl md:text-[40px] tracking-[0.89px]">
           Travel Smarter, Not Harder
         </h1>
-        <p className="text-gray text-lg">
+        <p className="text-gray text-base md:text-lg">
           Make every trip effortless. Tripzy lets you book rides and plan
           journeys with ease
         </p>

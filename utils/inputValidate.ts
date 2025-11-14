@@ -41,7 +41,7 @@ export const validateSearchForm = (data: SearchFormData): ValidationErrors => {
     } else if (!data.returnDate.isValid()) {
       errors.returnDate = "Please select a valid return date";
     } else if (data.departureDate && data.returnDate.isBefore(data.departureDate, "day")) {
-      errors.returnDate = "Return date must be on or after the departure date";
+      errors.returnDate = "Return date must be after the departure date";
     }
   }
 

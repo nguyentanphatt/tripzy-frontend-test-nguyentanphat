@@ -14,7 +14,7 @@ const TransportType = ({ id, title, selected, onSelect }: TransportTypeProps) =>
   const isSelected = selected === id;
   return (
     <div
-      className={`w-full py-3 px-4 rounded-lg flex items-center gap-3 ${
+      className={`w-full py-3 px-4 rounded-lg flex items-center justify-center md:justify-start gap-3 ${
         isSelected ? item.bgColor : "bg-white"
       } ${item.hoverColor} cursor-pointer`}
       onClick={() => onSelect && onSelect(id)}
@@ -24,7 +24,7 @@ const TransportType = ({ id, title, selected, onSelect }: TransportTypeProps) =>
       >
         <Image src={item.icon} alt={id} width={40} height={40} />
       </div>
-      <p className="text-dark font-medium text-base lg:text-lg">{title}</p>
+      <p className=" hidden md:block text-dark font-medium text-base lg:text-lg">{title}</p>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
 import LocationCombobox, { LocationOption } from './LocationCombobox';
 import { locations } from '@/contants/data';
 import { Dayjs } from 'dayjs';
@@ -9,7 +10,12 @@ import PassengerInput from './PassengerInput';
 import { images } from '@/contants/image';
 import { validateSearchForm, ValidationErrors, isFormValid } from '@/utils/inputValidate';
 
-const SearchForm = () => {
+type SearchFormProps = {
+    mode?: string;
+};
+
+const SearchForm = ({ mode = 'bus' }: SearchFormProps) => {
+    const router = useRouter();
     const [passengerCount, setPassengerCount] = useState<number>(1);
     const [fromLocation, setFromLocation] = useState<LocationOption | null>(null);
     const [toLocation, setToLocation] = useState<LocationOption | null>(null);
@@ -36,21 +42,24 @@ const SearchForm = () => {
         setErrors(validationErrors);
 
         if (isFormValid(validationErrors)) {
-            // Form is valid, proceed with search
-            console.log('Search submitted:', {
-                fromLocation,
-                toLocation,
-                departureDate,
-                returnDate,
-                isRoundTrip,
-                passengerCount,
-            });
+            const params = new URLSearchParams();
+            params.set('mode', mode);
+            params.set('from', encodeURIComponent(fromLocation!.english_name));
+            params.set('to', encodeURIComponent(toLocation!.english_name));
+            params.set('dep', departureDate!.format('YYYY-MM-DD'));
+            params.set('pax', passengerCount.toString());
+
+            if (isRoundTrip && returnDate) {
+                params.set('ret', returnDate.format('YYYY-MM-DD'));
+            }
+            
+            router.push(`/search?${params.toString()}`);
         }
     };
     return (
         <div className="flex flex-col gap-6">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 p-4">
-                <div className="flex items-end gap-2 w-full">
+                <div className="flex flex-col md:flex-row items-center md:items-end gap-2 w-full">
                     <div className="flex flex-col gap-1 w-full">
                         <LocationCombobox
                             label="From"
@@ -84,7 +93,7 @@ const SearchForm = () => {
                                 height={28}
                             />
                         </button>
-                        <div className="min-h-[20px] mt-1" />
+                        <div className="hidden md:block min-h-[20px] mt-1" />
                     </div>
                     <div className="flex flex-col gap-1 w-full">
                         <LocationCombobox
@@ -107,7 +116,7 @@ const SearchForm = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex gap-2 w-full">
+                <div className="flex flex-col md:flex-row gap-2 w-full">
                     <div className="flex flex-col gap-1 w-full">
                         <DateInput
                             label="Departure Date"
