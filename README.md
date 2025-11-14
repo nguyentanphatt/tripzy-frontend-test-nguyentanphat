@@ -112,7 +112,7 @@ yarn start
 
 ## Demo
 
-[Vercel Demo Link](https://tripzy-frontend-test-nguyentanphat-pp298jb4n.vercel.app/)
+[Vercel Demo Link](https://tripzy-frontend-test-nguyentanphat.vercel.app/)
 
 ## Scripts
 
