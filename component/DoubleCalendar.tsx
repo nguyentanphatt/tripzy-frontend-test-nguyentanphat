@@ -63,6 +63,7 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
         <div className="grid grid-cols-7 gap-x-1 md:gap-x-3 gap-y-2 text-sm">
           {days.map((day) => {
             const isCurrentMonth = day.month() === month.month();
+            const isPast = day.isBefore(dayjs(), "day");
             const isSelected = value ? value.isSame(day, "day") : false;
             const isToday = dayjs().isSame(day, "day");
             const isoDayIndex = (day.day() + 6) % 7;
@@ -72,6 +73,8 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
               "mx-auto size-8 flex items-center justify-center rounded-full transition-colors";
 
             const colorClasses = !isCurrentMonth
+              ? "text-light"
+              : isPast
               ? "text-light"
               : isSelected
               ? "bg-primary text-white"
@@ -85,7 +88,7 @@ const DoubleCalendar = ({ value, onChange }: Props) => {
               <button
                 key={day.format("YYYY-MM-DD")}
                 className={`${baseClasses} ${colorClasses}`}
-                disabled={!isCurrentMonth}
+                disabled={!isCurrentMonth || isPast}
                 onClick={() => onChange?.(day)}
               >
                 {day.date()}
